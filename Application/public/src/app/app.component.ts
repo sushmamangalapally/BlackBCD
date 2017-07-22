@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-
-import {UserService} from "./user.service";
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,12 +7,7 @@ import {UserService} from "./user.service";
 export class AppComponent {
   title = 'app works!';
 
-  constructor(private _userService: UserService){
+  constructor(){
 
-  }
-
-  getUsers(){
-    console.log("GETTING Users");
-    this._userService.getUsers();
   }
 }
