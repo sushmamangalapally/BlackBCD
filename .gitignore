@@ -1,2 +1,2 @@
-/bower_components
-/node_modules
+Application/node_modules
+Application/public/node_modules
