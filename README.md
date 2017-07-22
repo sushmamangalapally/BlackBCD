@@ -21,17 +21,17 @@ Open a different terminal
 # Application Root Directory
 ```terminal
 Application
-├── config             // THIS IS WHERE WE CODE
-│     ├── db.js        // db connect & configuration
-│     └── routes.js    // We specify routes, import controllers
-├── controllers        // THIS IS WHERE WE CODE
-│     └── users.js     // Example controller, import model
-├── models             // THIS IS WHERE WE CODE
-│     └── user.js      // Example model file, define schema
-├── node_modules       // Angular configurations
-├── public             // Root Angular (look below for full breakdown)
-├── package.json       // Dependency Configurations
-└── server.js          // Main Server File
+├── <config>             // THIS IS WHERE WE CODE
+│     ├── db.js          // db connect & configuration
+│     └── routes.js      // We specify routes, import controllers
+├── <controllers>        // THIS IS WHERE WE CODE
+│     └── users.js       // Example controller, import model
+├── <models>             // THIS IS WHERE WE CODE
+│     └── user.js        // Example model file, define schema
+├── <node_modules>       // Angular configurations
+├── <public>             // Root Angular (look below for full breakdown)
+├── package.json         // Dependency Configurations
+└── server.js            // Main Server File
 ```
 ## Root Angular Directory
 
