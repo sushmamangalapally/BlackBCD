@@ -1,7 +1,7 @@
 {
   "name": "MongooseDash",
   "version": "0.0.1",
-  "scripts":{
+  "scripts": {
     "prestart": "start mongod && start mongo",
     "start": "nodemon server.js"
   },
