@@ -1,5 +1,14 @@
 var path = require('path')
+var user = require('../controllers/users.js')
+var question = require('../controllers/questions.js')
+
 module.exports = function(app){
+    app.post('/register', user.register);
+    app.post('/findinguser', user.finduser);
+    app.get('/allquestions', question.allquestions)
+    app.post('/addquestions', question.addquestion)
+    app.post('/gettingquestion', question.specificquestion)
+    app.post('/answeringquestion', question.answerthequestion)
     app.all("*", (req,res,next) => {
         res.sendfile(path.resolve("./public/dist/index.html"))
     })

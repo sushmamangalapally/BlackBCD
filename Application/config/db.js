@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 var fs = require('fs');
 
-var promise = mongoose.connect('mongodb://localhost/dogDatabase', {
+var promise = mongoose.connect('mongodb://localhost/blackBeltDB', {
   useMongoClient: true
 });
 

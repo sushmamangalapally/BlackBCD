@@ -1,0 +1,18 @@
+<h1>{{info.title}}</h1>
+<h1>{{info.description}}</h1>
+
+<form (submit)="AnswerQuestion()" #gettingformDataforAnswerQuestion="ngForm"  method='post'> 
+  <label>Answer:</label> <input required  type='text' minlength="5" name='someanswer' [(ngModel)]="answer.content" #someanswer="ngModel">
+  <div class="red" *ngIf="someanswer.errors && (someanswer.dirty || someanswer.touched)">
+        <div [hidden]="!someanswer.errors.required">
+          Answer is required
+        </div>
+        <div [hidden]="!someanswer.errors.minlength">
+          Answer length must be longer than 5.
+        </div>
+  </div> 
+  <label>Supporting Details:</label> <input type='text' name='somedetails' [(ngModel)]="answer.details" #somedetails="ngModel">
+   <a [routerLink]='["/question/", info._id]'>Cancel</a> 
+  <input [disabled] = "someanswer.errors"   type="submit" value="Submit">
+  
+</form> 

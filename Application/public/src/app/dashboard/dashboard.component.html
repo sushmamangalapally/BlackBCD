@@ -1,0 +1,31 @@
+<p>
+  dashboard works!
+</p>
+<h1>Hi {{gettinguser}}</h1>
+
+<form (submit)="Search()" #browsingformData="ngForm" method='post'>
+<input type="text" name="filter_bike"  require  [(ngModel)]="filter_bike" value="Search"> <br>
+  <input   type="submit" value="Search">
+
+</form>
+
+<a [routerLink]='["/addaquestion"]'>Add a Question</a>
+
+<a [routerLink]='["/"]'>Logout</a>
+
+<table>
+  <tr >
+    <th>Question</th>
+    <th>Answers</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let question of questions">
+    <td>{{question.title}}</td>
+    <td>{{question.useranswers.length}}</td>
+     <td><a [routerLink]='["/question/", question._id]'>Show</a> <a [routerLink]='["/question/new_answer/", question._id]'>Answer</a></td>
+  </tr>
+</table>
+<!-- 
+  <div *ngFor="let question of questions">
+    <p>{{question.title}}</p>
+  </div> -->

@@ -1,0 +1,16 @@
+<h1>New Question</h1>
+<form (submit)="CreatingQuestion()" #gettingformDataforQuestion="ngForm"  method='post'> 
+  <label>Question:</label> <input required  type='text' minlength="10" name='title' [(ngModel)]="question.title" #title="ngModel">
+  <div class="red" *ngIf="title.errors && (title.dirty || title.touched)">
+        <div [hidden]="!title.errors.required">
+          Question is required
+        </div>
+        <div [hidden]="!title.errors.minlength">
+          Question length must be longer than 10.
+        </div>
+  </div> 
+  <label>Descripton:</label> <input type='text' required name='description' [(ngModel)]="question.description" #description="ngModel">
+  <a [routerLink]='["/dashboard"]'>Cancel</a>
+  <input [disabled] = "question.errors"   type="submit" value="Submit">
+  
+</form> 

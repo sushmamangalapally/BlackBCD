@@ -2,35 +2,52 @@ var mongoose = require('mongoose');
 // Importing User model, using mongoose getter method -- look at model page for more info
 var User = mongoose.model('User');
 
-function UsersController(){
-	this.index = function(req, res){
-		console.log('find function users controller /server/controllers/users.js');
-		User.find({}, function(err, users){
-			if(err){
-				console.log(err);
-				res.json({error: true, errors: err})
-			} else {
-				res.json(users);
-			}
-		})		
+module.exports = {
+	register: function(req, res){
+        console.log(req.body, "this is the user controler");
+        User.findOne({username: req.body.username}, function(err, user){
+            if(err){
+                res.status(500).json({message: "Ahhh"})
+            }
+            else{
+                if(user){
+                    if(user.password == req.body.password){
+                        res.json({user: user, message: "Authenticated"})
+                    }
+                    else{
+                        res.status(401).json({message: "Password or username do not match or aleady taken"})
+                    }
+                }
+                else{
+                    var user = new User(req.body)
+                    user.save(function(err){
+                        if(err){
+                            console.log("error")
+                            res.status(501).json({message: "AHH"})
+                        }
+                        else{
+                            res.json({user: user, message: "Created"})
+                        }
+                    })
+                }
+            }
+        })
+	},
+	finduser: function(res, req){
+		console.log("I am in controller of users.js (server) in showusers")
+        // console.log(req.body)
+        // User.findOne({_id: req.body}, function(err, user){
+        //     if(err){
+        //         console.log(err)
+        //         res.status(500).json({message: "Ahhh"})
+        //     }
+        //     else{
+        //         res.json({user: user})
+
+        //     }
+        // })		
 	}
-	this.create = function(req, res){
-		console.log('fourth: create function users controller /server/controllers/users.js');		
-		User.create(req.body, function(err, user){
-			console.log("sending json back to user factory check browser console")				
-			if(err){
-				// console.log(err);
-				res.json({error: true, errors: err});
-			} else {
-				res.json(user);
-			}
-		})
-	}
-	this.show = function(req, res){
-		// retrieve single user
-		// this is how we retrieve the users id
-		console.log(req.body.id)
-	}
+
 }
 
-module.exports = new UsersController();
+
